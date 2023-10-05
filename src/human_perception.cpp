@@ -60,7 +60,7 @@ const static std::vector<std::string> tf_prefixes{
 const static ros::Duration BODY_TF_TIMEOUT(0.01);
 
 const static double BOX_COLLISION_OBJECT_TOLERANCE(0.25);
-const static double FULLBODY_COLLISION_OBJECT_LENGHT_TOLERANCE(0.1);
+const static double FULLBODY_COLLISION_OBJECT_LENGTH_TOLERANCE(0.1);
 const static double FULLBODY_COLLISION_OBJECT_RADIUS_TOLERANCE(0.0);
 
 class HumanPerception
@@ -236,7 +236,7 @@ public:
 
         collision_objects.primitives[1].type = collision_objects.primitives[1].CYLINDER;
         collision_objects.primitives[1].dimensions.resize(2);
-        collision_objects.primitives[1].dimensions[0] = tf2::tf2Distance(torso.getOrigin(), waist.getOrigin()) + FULLBODY_COLLISION_OBJECT_LENGHT_TOLERANCE;
+        collision_objects.primitives[1].dimensions[0] = tf2::tf2Distance(torso.getOrigin(), waist.getOrigin()) + FULLBODY_COLLISION_OBJECT_LENGTH_TOLERANCE;
         collision_objects.primitives[1].dimensions[1] = tf2::tf2Distance(right_shoulder.getOrigin(), left_shoulder.getOrigin()) / 2 + FULLBODY_COLLISION_OBJECT_RADIUS_TOLERANCE;
 
         tf2::toMsg((torso.getOrigin() + waist.getOrigin()) / 2.0, collision_objects.primitive_poses[1].position); // POSITION
@@ -306,7 +306,7 @@ public:
 
         object->primitives[index].type = object->primitives[index].CYLINDER;
         object->primitives[index].dimensions.resize(2);
-        object->primitives[index].dimensions[0] = tf2::tf2Distance(point1_tf.getOrigin(), point2_tf.getOrigin()) + FULLBODY_COLLISION_OBJECT_LENGHT_TOLERANCE;
+        object->primitives[index].dimensions[0] = tf2::tf2Distance(point1_tf.getOrigin(), point2_tf.getOrigin()) + FULLBODY_COLLISION_OBJECT_LENGTH_TOLERANCE;
         object->primitives[index].dimensions[1] = radius + FULLBODY_COLLISION_OBJECT_RADIUS_TOLERANCE;
 
         tf2::toMsg((point1_tf.getOrigin() + point2_tf.getOrigin()) / 2.0, object->primitive_poses[index].position); // POSITION
