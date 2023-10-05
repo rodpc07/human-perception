@@ -293,7 +293,6 @@ public:
         if (object->primitives.size() <= index)
         {
             object->primitives.resize(index + 1);
-            ROS_INFO("ADD CAPACITY");
         }
 
         if (object->primitive_poses.size() <= index)
@@ -342,18 +341,13 @@ void removeHumanCollisions(int sig)
 
     ros::V_string knownObjects = planning_scene_interface.getKnownObjectNames();
 
-    for (auto &object : knownObjects)
-    {
-        ROS_INFO(object.c_str());
-    }
-
     ros::V_string humanObjects;
     std::copy_if(knownObjects.begin(), knownObjects.end(), std::back_inserter(humanObjects), [](const std::string &str)
                  { return str.find("human") != std::string::npos; });
 
     for (auto &object : humanObjects)
     {
-        ROS_INFO(object.c_str());
+        ROS_INFO("Removing %s", object.c_str());
     }
 
     planning_scene_interface.removeCollisionObjects(humanObjects);
