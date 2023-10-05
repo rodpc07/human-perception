@@ -29,4 +29,4 @@ The human_perception node requires the presence of an active MoveIt planning_sce
 <node name="human_perception" pkg="human_perception" type="human_perception" output="screen">
     <param name="collision_mode" type="int" value="0 or 1" />
 </node>
-    ```
+```
