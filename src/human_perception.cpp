@@ -1,17 +1,15 @@
 #include <ros/ros.h>
 #include <signal.h>
 #include <moveit/planning_scene_interface/planning_scene_interface.h>
-#include <moveit/planning_interface/planning_interface.h>
 
 #include <moveit_msgs/CollisionObject.h>
 
 #include <tf2_ros/transform_listener.h>
+#include <tf2/LinearMath/Transform.h>
+
 #include <tf2/LinearMath/Vector3.h>
 #include <tf2/convert.h>
 #include <tf2_eigen/tf2_eigen.h>
-
-#include <tf2/LinearMath/Transform.h>
-
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 
 #include <hri/hri.h>
@@ -86,7 +84,7 @@ public:
 
     void addHumanCollisions()
     {
-        ros::Rate loop_rate(10);
+        ros::Rate loop_rate(25);
 
         tf2_ros::Buffer tfBuffer;
         tf2_ros::TransformListener tfListener(tfBuffer);
@@ -185,8 +183,6 @@ public:
         collision_objects.primitive_poses[0].orientation.w = 1.0;
 
         collision_objects.operation = collision_objects.ADD;
-
-        // if (planning_scene_interface->getKnownObjectNames())
 
         return planning_scene_interface->applyCollisionObject(collision_objects, collisionColor);
     }

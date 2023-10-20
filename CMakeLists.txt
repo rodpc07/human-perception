@@ -13,17 +13,11 @@ find_package(catkin REQUIRED
     moveit_core
     moveit_ros_planning
     moveit_ros_planning_interface
-    geometric_shapes
     tf2
     tf2_ros
     tf2_eigen
     tf2_geometry_msgs
-    tf
-    tf_conversions
     eigen_conversions
-    std_msgs
-    genmsg
-    message_generation
     hri
 )
 
